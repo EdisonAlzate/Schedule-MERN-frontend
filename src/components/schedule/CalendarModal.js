@@ -5,6 +5,7 @@ import moment from 'moment'
 import Swal from 'sweetalert2'
 import {useDispatch, useSelector} from 'react-redux'
 import { uiCloseModal } from '../../actions/uiAction';
+import { eventAddNew} from '../../actions/eventsAction';
 
 
 
@@ -81,6 +82,11 @@ const {title,notes,start, end}=formValues
         if(title.trim().length<2){
             return setTitleValid(false)
         }
+
+        dispatch(eventAddNew({
+            ...formValues,
+            id:new Date().getTime()
+        }))
 
         setTitleValid(true)
         closeModal()
