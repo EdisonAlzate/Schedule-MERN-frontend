@@ -1,10 +1,12 @@
 import React from 'react'
 import { RouterApp } from './router/RouterApp'
+import {Provider} from 'react-redux'
+import { store } from './store/store'
 
 export const ScheduleApp = () => {
   return (
-    <div>
+    <Provider store={store}>
     <RouterApp/>
-    </div>
+    </Provider>
   )
 }

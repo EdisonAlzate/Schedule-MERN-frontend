@@ -24,7 +24,7 @@ const nowPlus1=now.clone().add(1,'hours')
 
 
 export const CalendarModal = () => {
-const [titleValid, setTitleValid] = useState(true)  
+const [titleValid, setTitleValid] = useState(false)  
 const [dateStart, setDateStart] = useState(now.toDate())
 const [dateEnd, setDateEnd] = useState(nowPlus1.toDate())
 const [formValues, setformValues] = useState({
@@ -75,6 +75,9 @@ const {title,notes,start, end}=formValues
         if(title.trim().length<2){
             return setTitleValid(false)
         }
+
+        setTitleValid(true)
+        closeModal()
 
     }
    
