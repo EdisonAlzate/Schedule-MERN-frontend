@@ -6,13 +6,13 @@ import moment from 'moment';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import { CalendarEvent } from './CalendarEvent';
 import { CalendarModal } from './CalendarModal';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { uiOpenModal } from '../../actions/uiAction';
 import { eventSetActive } from '../../actions/eventsAction';
 import { AddNewFab } from '../userExperience/addNewFab';
 const localizer = momentLocalizer(moment)
 
-const events=[{
+/* const events=[{
   title:'I Starting in my new job',
   start:moment().toDate(),
   end:moment().add(2,'hours').toDate(),
@@ -22,21 +22,23 @@ const events=[{
     _id:'123',
     name:'Edison'
   }
-}]
+}] */
 
 
 
 export const ScreenSchedule = () => {
+  const {events} = useSelector(state => state.calendar)
     const dispatch = useDispatch()
     const [lastView, setLastView] = useState(localStorage.getItem('LastView')|| 'month')
 
     const onDoubleClick=(e)=>{
       dispatch(uiOpenModal())
+      
     }
 
     const onSelectEvent=(e)=>{
       dispatch(eventSetActive(e))
-      dispatch(uiOpenModal())
+      
     }
 
     const onViewChange=(e)=>{
