@@ -49,6 +49,8 @@ useEffect(() => {
     
    if(activeEvent){
        setformValues(activeEvent)
+   }else{
+       setformValues(initEvent)
    }
 }, [activeEvent,setformValues])
 
@@ -126,7 +128,7 @@ const {title,notes,start, end}=formValues
           overlayClassName="modal-fondo"
           /* contentLabel="Modal example" */
           >
-          <h1> New Event </h1>
+          <h1> {(activeEvent)? 'Edit Event':'New Event'}</h1>
           <hr />
 <form 
     className="container"
