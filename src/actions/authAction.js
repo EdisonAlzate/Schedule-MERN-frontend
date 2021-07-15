@@ -33,7 +33,6 @@ export const startChecking=()=>{
         const resp=await fetchConToken('auth/renew');
         const body =await resp.json();
 
-        console.log(body)
 
     if(body.ok){
         localStorage.setItem('token',body.token);
@@ -45,7 +44,7 @@ export const startChecking=()=>{
         }))
     
     }else{
-        Swal.fire('Error',body.msg, 'error');
+        /* Swal.fire('Error',body.msg, 'error'); */
         dispatch(chekingFinish())
     }
     }
