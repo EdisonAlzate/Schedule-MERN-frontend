@@ -5,7 +5,7 @@ import moment from 'moment'
 import Swal from 'sweetalert2'
 import {useDispatch, useSelector} from 'react-redux'
 import { uiCloseModal } from '../../actions/uiAction';
-import { eventAddNew, eventClearActiveEvent, eventUpdated} from '../../actions/eventsAction';
+import {  eventClearActiveEvent, eventStartAddNew, eventUpdated} from '../../actions/eventsAction';
 
 
 
@@ -103,14 +103,7 @@ const {title,notes,start, end}=formValues
             dispatch(eventUpdated(formValues))
         }else{
 
-            dispatch(eventAddNew({
-                ...formValues,
-                id:new Date().getTime(),
-                user:{
-                    _id:'456',
-                    name:'Alzate'
-                }
-            }))
+            dispatch(eventStartAddNew(formValues))
         }
 
         setTitleValid(true)
