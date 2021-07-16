@@ -5,7 +5,7 @@ import moment from 'moment'
 import Swal from 'sweetalert2'
 import {useDispatch, useSelector} from 'react-redux'
 import { uiCloseModal } from '../../actions/uiAction';
-import {  eventClearActiveEvent, eventStartAddNew, eventUpdated} from '../../actions/eventsAction';
+import {  eventClearActiveEvent, eventStartAddNew, eventStartUpdate} from '../../actions/eventsAction';
 
 
 
@@ -100,7 +100,7 @@ const {title,notes,start, end}=formValues
         }
  
         if(activeEvent){
-            dispatch(eventUpdated(formValues))
+            dispatch(eventStartUpdate(formValues))
         }else{
 
             dispatch(eventStartAddNew(formValues))
