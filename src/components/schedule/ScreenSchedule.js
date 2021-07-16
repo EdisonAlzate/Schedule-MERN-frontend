@@ -29,6 +29,7 @@ const localizer = momentLocalizer(moment)
 
 export const ScreenSchedule = () => {
   const {events,activeEvent} = useSelector(state => state.calendar)
+  const {uid} = useSelector(state => state.auth)
     const dispatch = useDispatch()
     const [lastView, setLastView] = useState(localStorage.getItem('LastView')|| 'month')
 
@@ -57,8 +58,10 @@ export const ScreenSchedule = () => {
 
     const eventStyleGetter=(event, start, end, isSelected)=>{
       
+      console.log(event)
+
       const style={
-        backgroundColor:'green',
+        backgroundColor:(uid===event.user._id)?'#367CF7':'#465660',
         borderRadius:'0px',
         opacity:0.8,
         display:'block',
